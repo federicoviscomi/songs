@@ -2,10 +2,22 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { selectSong } from '../actions';
 
-class SongList extends React.Component {
+interface SongListProps {
+    songs: any,
+    selectSong: any
+}
+
+interface SongListState {
+}
+
+class SongList extends React.Component<SongListProps, SongListState> {
+
+    constructor(props: SongListProps) {
+        super(props);
+    }
 
     renderList(){
-        return this.props.songs.map((song)=>{
+        return this.props.songs.map((song: any)=>{
             return (
                 <div className="item" key={song.title}>
                     <div className="right floated content">
@@ -30,7 +42,7 @@ class SongList extends React.Component {
     }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state: any) => {
     return {
         songs: state.songs
     };
